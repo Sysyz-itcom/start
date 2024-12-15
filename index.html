@@ -178,28 +178,6 @@
         document.addEventListener('contextmenu', function (e) {
             e.preventDefault(); // 阻止右键菜单显示
         });
-
-        // 页面加载时执行
-        window.onload = function () {
-            // 获取 JSON 文件中的版本信息
-            fetch('https://sysyz-itcom.github.io/update/exe/browser.json')
-                .then(response => response.json())  // 将响应解析为 JSON
-                .then(data => {
-                    // 假设 JSON 文件结构如下: { "version": 1 }
-                    if (data.version === "1") {
-                        // 如果 version 为 1，弹出提示并跳转
-                        if (confirm('【更新检查】\n检测到新版本，请点击确认，然后我们将为您安装。\n\n【提示：如果您现在还不想更新，请点击取消。】')) {
-                            // 用户点击"确定"后跳转到指定页面
-                            window.location.href = 'https://sysyz-itcom.github.io/update/exe/download/browser.EXE';
-                        }
-                    }
-                    // 如果 version 是 0 或其他值，不做任何操作
-                })
-                .catch(error => {
-                    // 处理错误，例如网络问题或无法获取 JSON 文件
-                    console.error('Error fetching the JSON file:', error);
-                });
-        };
     </script>
 </body>
 
